@@ -1,19 +1,52 @@
-/* Reset styles */
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Chewy', Arial, sans-serif;
-    background-color: #d9b3ff; /* Light purple background */
+    background-color: #ddbbff; /* Light purple background */
     color: #000;
     text-align: center;
+    height: 100%; /* Ensures body and html occupy full height */
+    display: flex; /* Use flexbox on the body */
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
 }
 
 .container {
-    margin-top: 9%;
+    max-width: 90%; /* Responsive width for the content */
+    width: 90%; /* Make container span the full page width */
+    text-align: center;
+    padding: 2rem; /* Optional padding for aesthetics */
 }
 
 .sup-gif {
-    width: 20%; /* Larger and scaled relative to the viewport */
+    width: 25%; /* Increased size for GIF */
+    animation: float 2s infinite;
+}
+
+
+.rawr {
+    width: 60%; /* Increased size for GIF */
+    clip-path: inset(1% 0 1% 0); /* Crop 2% from the top and bottom */
+    position: relative; /* Required for clip-path */
+    margin-top: -1rem;
+}
+
+.cat-gif2 {
+    width: 80%; /* Adjust gif size */
+    display: block;
+    margin: -2rem auto; /* Center the gif */
+    animation: float 2s infinite; /* Floating animation */
+    clip-path: inset(4% 0 4% 0); /* Crop 2% from the top and bottom */
+    position: relative; /* Required for clip-path */
+}
+
+.sad-cat {
+    width: 100%; /* Increased size for GIF */
+    animation: float 2s infinite;
+}
+
+.sus-cat {
+    width: 75%; /* Increased size for GIF */
     animation: float 2s infinite;
 }
 
@@ -23,22 +56,431 @@ body, html {
     100% { transform: translateY(0); }
 }
 
+/* Shared styles for message text */
 .message {
-    font-size: 1.75rem; /* Relative font size */
-    max-width: 60%; /* Smaller width for the message */
-    margin: 2rem auto; /* Centered */
-    line-height: 1.5;
+    font-size: 1.8rem; /* Adjust text size */
+    margin: 2.5rem auto; /* Center the box horizontally */
+    line-height: 1.8; /* Improve text spacing */
+    text-align: center; /* Center the text inside the box */
+    box-sizing: border-box; /* Include padding and borders in the width calculation */
+    display: block; /* Ensures the width behaves as intended */
 }
 
+
+/* "Press any key to continue" on first page */
 .continue-text {
-    font-size: 1.5rem;
+    font-size: 1.75rem; /* Slightly larger font */
     margin-top: 5rem;
     color: #9978a8;
     animation: hover-fade 2s infinite;
-    cursor: pointer;
+    cursor: default;
 }
 
 @keyframes hover-fade {
     0%, 100% { opacity: 0; }
     50% { opacity: 1; }
+}
+
+/* Second page styles (birthday.html) */
+.images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9rem; /* Adjusted spacing between elements */
+    margin-top: 2rem;
+    margin-left: 3rem;
+}
+
+.waffle {
+    width: 15%; /* Larger size for the waffle */
+}
+
+.cat-gif {
+    width: 20%; /* Increased size for the cat GIF */
+}
+
+/* Start Button */
+.start-button {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 2rem; /* Larger button font */
+    color: white;
+    background-color: #ffcc00; /* Solid yellow color */
+    border: none;
+    padding: 1.5rem 3rem; /* Button padding */
+    border-radius: 40px; /* Rounded corners */
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 8px #d97700; /* Dark orange shadow for depth */
+    transition: all 0.2s ease;
+    font-weight: bold;
+}
+
+.start-button:active {
+    transform: translateY(5px); /* Simulates pressing down */
+}
+
+.start-button:hover {
+    animation: bounce 0.6s infinite; /* Button bounces slightly */
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.choose-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem; /* Space between buttons */
+    justify-content: center;
+    align-items: center; /* Center both vertically and horizontally */
+    height: 100vh; /* Full-screen height */
+}
+
+/* Button styles */
+.button {
+    font-family: 'Press Start 2P', Arial, sans-serif; /* Game-like font only for buttons */
+    background-color: #f0f0f0; /* Light gray */
+    border: 2px solid #000; /* Black border */
+    padding: 1.5rem 3rem; /* Button size */
+    border-radius: 25px; /* Rounded edges */
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px; /* Fixed width for consistent button size */
+    cursor: default;
+    transition: transform 1s ease, box-shadow 1s ease; /* Smooth zoom-out transition */
+}
+
+/* Zoom-out to pulsating peak size */
+.button.zoom-out {
+    transform: scale(1.15); /* Directly scale to the pulsating peak size */
+    box-shadow: 8px 8px 20px rgba(102, 51, 153, 0.9); /* Enhanced shadow */
+}
+
+/* Pulsating animation */
+.button.pulsate {
+    animation: pulsate 1s infinite; /* Pulsating animation starts at peak size */
+    box-shadow: 8px 8px 20px rgba(102, 51, 153, 0.9); /* Persistent shadow during pulsation */
+}
+
+@keyframes pulsate {
+    0%, 100% {
+        transform: scale(1.15); /* Starts and ends at peak size */
+    }
+    50% {
+        transform: scale(1.1); /* Shrinks slightly in the middle */
+    }
+}
+
+/* Wordle Container */
+.wordle-container {
+    max-width: 90%;
+    /* margin: auto; */
+    text-align: center;
+    margin-top: -2rem;
+}
+
+/* Title and Hint Text */
+.wordle-title {
+    font-family: 'Press Start 2P', Arial, sans-serif; /* Game-like font only for title */
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.wordle-hint {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #705187; /* Slightly darker grey */
+}
+
+/* Wordle Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, 60px); /* 6 equal-width columns */
+    grid-gap: 10px;
+    justify-content: center; /* Center the grid horizontally */
+    margin: 0 auto 2rem auto; /* Center the grid with top and bottom margin */
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    transition: background-color 0.2s ease;
+}
+
+/* Keyboard Styles */
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Space between rows */
+    justify-content: center;
+    align-items: center; /* Center the keyboard */
+    margin-top: 1rem;
+}
+
+.row {
+    display: flex;
+    gap: 6px; /* Space between keys */
+}
+
+.key {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    border-radius: 10px; /* Rounded corners */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    cursor: pointer;
+}
+
+/* Color Coding for Both Grid and Keyboard */
+.correct {
+    background-color: #6aaa64; /* Green */
+    color: #fff;
+}
+
+.misplaced {
+    background-color: #d7b000; /* Yellow */
+    color: #fff;
+}
+
+.wrong {
+    background-color: #787c7e; /* Grey */
+    color: #fff;
+}
+
+/* Pressed key effect */
+.key:active {
+    transform: translateY(2px); /* Slightly press down */
+}
+
+/* Container for the game */
+.this-or-that-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh; /* Full height of the viewport */
+}
+
+/* Title Styling */
+.this-or-that-title {
+    font-family: 'Press Start 2P', Arial, sans-serif; /* Game-like font */
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #000;
+    margin-top: -1rem;
+}
+
+/* Game Layout */
+.this-or-that-game {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* Space between elements */
+}
+
+/* Image Styling */
+.this-or-that-image {
+    width: 100%; /* Each image takes 45% of the container width */
+    max-width: 300px; /* Max width to maintain proportions */
+    height: auto; /* Keep aspect ratio */
+    cursor: pointer; /* Make images clickable */
+    transition: transform 0.2s ease; /* Smooth scaling effect on hover */
+    margin-bottom: 1rem;
+}
+
+/* "or" Text Styling */
+.or-text {
+    font-family: 'Press Start 2P', Arial, sans-serif; /* Game-like font */
+    font-size: 2rem;
+    margin: 0 1rem; /* Space on either side of the text */
+}
+
+/* Hover Effect on Images */
+.this-or-that-image:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.question {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+
+.option {
+    display: flex;
+    flex-direction: column; /* Stacks the image and name vertically */
+    align-items: center; /* Centers both the image and the text */
+    margin: 10px;
+    text-align: center; /* Centers the name below the image */
+}
+
+.option-name {
+    font-family: 'Press Start 2P', Arial, sans-serif;
+    font-size: 1rem;
+    margin-top: 8px;
+    color: #000;
+}
+
+/* Reset body and html for page3 only */
+body.page3, html.page3 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: transparent; /* Ensure background is transparent */
+}
+
+/* Background video container */
+.page3 .video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Place it behind other content */
+    display: flex; /* To center the video */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background video styling */
+.page3 #bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure no cropping */
+    object-position: center; /* Keep the video centered */
+    background-color: #d4b4fa; /* Fallback background for any gaps */
+}
+
+/* Content overlay for title and description */
+.page3 .content {
+    position: relative;
+    z-index: 1; /* Content appears above the background video */
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Continue Button Styling */
+#continue-button {
+    margin-top: 25px; /* Space between video and button */
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1.5rem; /* Match birthday button font size */
+    color: white;
+    background-color: #ffcc00; /* Solid yellow background */
+    border: none;
+    padding: 1rem 2rem; /* Match padding from birthday button */
+    border-radius: 40px; /* Rounded corners */
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 8px #d97700; /* Dark orange shadow for depth */
+    transition: all 0.2s ease;
+    font-weight: bold;
+}
+
+/* Hover and Active States */
+#continue-button:hover {
+    animation: bounce 0.6s infinite; /* Add slight bounce on hover */
+}
+
+#continue-button:active {
+    transform: translateY(5px); /* Simulates pressing down */
+}
+
+/* Adjust the position of the video and button */
+.foreground-video-container {
+    position: absolute;
+    top: 63.5%;
+    left: 50%;
+    width: 60%; /* Adjust for responsiveness */
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensures it overlays other elements */
+    text-align: center;
+}
+
+#foreground-video {
+    max-width: 88%; /* Maintain responsiveness */
+    height: auto; /* Keep aspect ratio */
+    box-shadow: 0px 10px 20px #392d4680; /* Add shadow for better visibility */
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Reset body and HTML for page4 */
+body.page4, html.page4 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ddbbff; /* Light purple background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'League Spartan', sans-serif;
+    cursor: url('assets/cursor.gif'), auto; /* Custom cursor */
+}
+
+/* Container */
+.container {
+    text-align: center;
+    position: relative; /* To position the cursor icon correctly */
+}
+
+/* Button styling */
+.last-button {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 4rem;
+    color: white;
+    background-color: #ffcc00; /* Yellow background */
+    border: none;
+    padding: 3rem 6rem;
+    border-radius: 80px; /* Rounded corners */
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 16px #d97700; /* Dark orange shadow for depth */
+    transition: all 0.2s ease;
+    font-weight: bold;
+    position: relative; /* Required for cursor icon placement */
+}
+
+.last-button:active {
+    transform: translateY(5px); /* Simulates pressing down */
+    box-shadow: none; /* Remove shadow on click */
+}
+
+/* Cursor GIF styling */
+.cursor-icon {
+    position: absolute;
+    bottom: -30%; /* Adjust position below the button */
+    right: 29%; /* Adjust position to the right of the button */
+    width: 15%; /* Adjust size as needed */
+    height: auto; /* Keep aspect ratio */
+    pointer-events: none; /* Ensure it doesn't interfere with button interaction */
 }

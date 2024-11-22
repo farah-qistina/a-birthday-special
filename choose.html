@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Birthday Special</title>
+    <link rel="icon" href="assets/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="choose-container">
+        <div class="button" id="button1">💜 GAME 1 💜</div>
+        <div class="button" id="button2">💜 GAME 2 💜</div>
+        <div class="button" id="button3">💜 VIDEO 1 💜</div>
+        <div class="button" id="button4">💜 VIDEO 2 💜</div>
+    </div>
+
+    <script>
+        // Get the button to highlight from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const highlight = urlParams.get('highlight') || "1"; // Default to first button
+
+        // Select the correct button
+        const button = document.getElementById(`button${highlight}`);
+        if (button) {
+            // Step 1: Static display for 0.5 seconds
+            setTimeout(() => {
+                // Step 2: Add zoom-out class to reach pulsating peak size
+                button.classList.add('zoom-out');
+
+                // Step 3: After zoom-out, start pulsating
+                setTimeout(() => {
+                    button.classList.remove('zoom-out');
+                    button.classList.add('pulsate');
+
+                    // Step 4: After pulsating for 1 second, make it static at peak size
+                    setTimeout(() => {
+                        button.classList.remove('pulsate');
+                        button.style.transform = "scale(1.15)"; // Keep it static at peak size
+
+                        // Step 5: Navigate to the next page after 1 second of being static
+                        setTimeout(() => {
+                            const nextPage = `page${highlight}.html`; // Replace with actual page names
+                            window.location.href = nextPage;
+                        }, 1000);
+                    }, 1000); // Duration of pulsation
+                }, 1000); // Duration of zoom-out animation
+            }, 500); // Initial delay for static display
+        }
+    </script>
+</body>
+</html>

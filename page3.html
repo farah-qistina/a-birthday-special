@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Birthday Special</title>
+    <link rel="icon" href="assets/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body class="page3">
+    <!-- Background Video -->
+    <div class="video-background">
+        <video autoplay loop muted id="bg-video">
+            <source src="assets/bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Overlay Video -->
+    <div class="foreground-video-container">
+        <video id="foreground-video" controls>
+            <source src="assets/group.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button id="continue-button" onclick="redirectToNext()">Continue</button>
+    </div>
+
+    <script>
+        function redirectToNext() {
+            window.location.href = "choose.html?highlight=4"; // Replace with your desired page
+        }
+    </script>
+</body>
+</html>

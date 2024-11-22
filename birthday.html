@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="icon" href="assets/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=League+Spartan:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Happy birthday smartie!!! Welcome to the middle ages (25) :D</h1>
+        <p class="message">
+            
+            I know I haven’t been with you for that long (relative to your age), but I’ve seen you grow tremendously in that short period of time and I’m SOO proud of you. I think you deserve all the opportunities that have come your way, and I can’t wait to see where they'll take you 🤩 Wherever it is, I’ll always be all up in your face (literally and/or metaphorically) 💖
+        </p>
+        <div class="images">
+            <img src="assets/waffle.png" alt="Waffles" class="waffle">
+            <button class="start-button">START</button>
+            <img src="assets/face-rub.gif" alt="Cat GIF" class="cat-gif">
+        </div>
+    </div>
+    <script>
+        // Navigate to the choose page when the START button is clicked
+        document.querySelector('.start-button').addEventListener('click', () => {
+            window.location.href = "choose.html?highlight=1"; // Navigate to the choose page
+        });
+    </script>
+</body>
+</html>
