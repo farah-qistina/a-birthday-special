@@ -1,5 +1,5 @@
 const WORD = "waffle"; // The word to guess
-const ROWS = 5; // Number of attempts
+const ROWS = 6; // Number of attempts, now set to 6
 const COLUMNS = WORD.length; // Length of the word
 
 let currentRow = 0;
@@ -76,7 +76,6 @@ async function isWordValid(word) {
     }
 }
 
-
 async function checkRow() {
     if (currentCol < COLUMNS) return; // Ensure the row is full
 
@@ -87,11 +86,11 @@ async function checkRow() {
         .join("")
         .toLowerCase();
 
-    // Check if the word is valid using a dictionary API or your own validation logic
-    const isValid = await isWordValid(guess); // Replace this with your own validation logic or API call
+    // Check if the word is valid
+    const isValid = await isWordValid(guess);
     if (!isValid) {
-        alert("Not a valid word!"); // Show a popup dialog
-        return; // Exit without progressing to the next row
+        alert("Not a valid word!");
+        return;
     }
 
     const keyElements = document.querySelectorAll(".key");
@@ -122,7 +121,7 @@ async function checkRow() {
     if (guess === WORD) {
         setTimeout(() => {
             window.location.href = "goodjob.html"; // Redirect to the success page
-        }, 1000); // Add a slight delay before redirecting
+        }, 1000);
         return;
     }
 
@@ -132,10 +131,9 @@ async function checkRow() {
     if (currentRow === ROWS) {
         setTimeout(() => {
             window.location.href = "ohno.html"; // Redirect to the failure page
-        }, 1000); // Add a slight delay before redirecting
+        }, 1000);
     }
 }
-
 
 function deleteLetter() {
     if (currentCol > 0) {
