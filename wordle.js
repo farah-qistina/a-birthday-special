@@ -61,7 +61,23 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-function checkRow() {
+async function isWordValid(word) {
+    const API_URL = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+    try {
+        const response = await fetch(API_URL);
+        if (response.ok) {
+            const data = await response.json();
+            return data.length > 0; // Valid if API returns a non-empty response
+        }
+        return false; // Invalid if API returns 404 or similar
+    } catch (error) {
+        console.error("Error validating word:", error);
+        return false; // Assume invalid if there's a network error
+    }
+}
+
+
+async function checkRow() {
     if (currentCol < COLUMNS) return; // Ensure the row is full
 
     const guess = Array.from(
@@ -70,6 +86,13 @@ function checkRow() {
         .map((cell) => cell.textContent)
         .join("")
         .toLowerCase();
+
+    // Check if the word is valid using a dictionary API or your own validation logic
+    const isValid = await isWordValid(guess); // Replace this with your own validation logic or API call
+    if (!isValid) {
+        alert("Not a valid word!"); // Show a popup dialog
+        return; // Exit without progressing to the next row
+    }
 
     const keyElements = document.querySelectorAll(".key");
 
@@ -112,6 +135,7 @@ function checkRow() {
         }, 1000); // Add a slight delay before redirecting
     }
 }
+
 
 function deleteLetter() {
     if (currentCol > 0) {
