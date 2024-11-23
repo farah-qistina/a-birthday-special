@@ -185,8 +185,9 @@ body, html {
 /* Title and Hint Text */
 .wordle-title {
     font-family: 'Press Start 2P', Arial, sans-serif; /* Game-like font only for title */
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 4rem;
+    margin-bottom: 4rem;
+    animation: float 2s infinite;
 }
 
 .wordle-hint {
